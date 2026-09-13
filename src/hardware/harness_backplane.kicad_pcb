@@ -1,0 +1,46 @@
+(kicad_pcb (version 20240108) (generator pcbnew)
+
+  (general
+    (thickness 3.0)
+  )
+
+  (layers
+    (0 "F.Cu" signal)
+    (31 "B.Cu" signal)
+    (32 "F.Adhes" user "F.Adhesive")
+    (33 "B.Adhes" user "B.Adhesive")
+    (34 "F.Paste" user "F.Paste")
+    (35 "B.Paste" user "B.Paste")
+    (36 "F.SilkS" user "F.SilkScreen")
+    (37 "B.SilkS" user "B.SilkScreen")
+    (38 "F.Mask" user "F.Mask")
+    (39 "B.Mask" user "B.Mask")
+    (40 "Edge.Cuts" user)
+  )
+
+  (setup
+    (pad_to_pad_clearance 0.5)
+    (clearance_min 0.4)
+    (track_width 2.5) ; Enforced heavy width for 3oz copper at 45 Amps
+    (via_size 1.2)
+  )
+
+  ;; Weatherproof Guard Ring Isolation Boundaries (Hermetic Ceramic Wall Offset)
+  (zone (net 0) (layer "F.Cu") (tstamp "zone-guard-ring-01")
+    (connect_pads yes (clearance 0.8))
+    (min_thickness 0.5)
+    (filled_polygon
+      (pts
+        (xy -15000 -1000) (xy 15000 -1000) (xy 15000 1000) (xy -15000 1000)
+      )
+    )
+  )
+
+  ;; 45-Degree Trace Routing from Central Bus to 12V Topping Blower Motor Terminal
+  (segment (start -7500 0) (end -7300 200) (width 2.5) (layer "F.Cu") (net 1) (tstamp "track-45-01"))
+  (segment (start -7300 200) (end -7300 4500) (width 2.5) (layer "F.Cu") (net 1) (tstamp "track-45-02"))
+
+  ;; 45-Degree Trace Routing to Automatic Submersible Bilge Pump Relays
+  (segment (start 7500 0) (end 7700 -200) (width 2.5) (layer "F.Cu") (net 2) (tstamp "track-45-03"))
+  (segment (start 7700 -200) (end 7700 -4500) (width 2.5) (layer "F.Cu") (net 2) (tstamp "track-45-04"))
+)
