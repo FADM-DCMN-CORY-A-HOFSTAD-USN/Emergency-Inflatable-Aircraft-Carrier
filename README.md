@@ -15,6 +15,8 @@
 │   ├── junction_box.kicad_pcb   # Enclosure internal interconnect routing board layout
 │   ├── power_backplane.sch      # KiCad Eeschema electronic wiring schematic
 │   ├── ribbon_connector.sch     # Weatherproof inter-plate ribbon connector pin map
+│   ├── surface_power.gbr        # Raw front copper (F.Cu) photoplotter aperture vectors
+│   ├── surface_power_mask.gbr   # Raw top solder mask (F.Mask) negative vector overlays
 │   ├── surface_power.kicad_pcb  # Ultra-thin 0.5mm flat-foil deck surface routing file
 │   ├── surface_power.sch        # Low-profile flat-foil ribbon connector schematic
 │   └── tow_interface.net        # 600A external power umbilical terminal block netlist
@@ -23,17 +25,19 @@
 │   │   ├── HarnessIO.cs         # C# native 16-state step memory-mapped register driver
 │   │   ├── arresting_simulator.py # Reverse-polarity maglev aircraft braking recovery tool
 │   │   ├── catapult_simulator.py # Multi-phase surface coil induction catapult launch engine
+│   │   ├── fault_logger.py      # Real-time register error sniffer & mitigation trap
 │   │   ├── harness_bridge.py    # Python-to-C# unmanaged memory interop bridge layer
 │   │   └── telemetry_processor.py # Numba-accelerated parallel telemetry processing node
 │   ├── carrier_cleat.scad       # Parametric titanium exterior side rigging mooring cleats
 │   ├── carrier_cooling.scad     # Sub-surface 3D vapor chamber phase-change thermal housing
+│   ├── carrier_hinge_pin.scad   # High-tensile structural interlink titanium pins and tracks
 │   ├── carrier_junction_box.scad # Grade 5 Titanium terminal box protective enclosure shield
 │   ├── carrier_surface_eddy.scad # Un-recessed landing deck plate with tapered safety profiles
 │   ├── carrier_top_lid.scad     # Upgraded top lid assembly with integrated vacuum storage hooks
 │   ├── carrier_vacuum_port.scad # Internal non-return flush vacuum evacuation suction valves
-│   ├── deck_metrics.json        # Centralized programmatic JSON parameter metric engine
 │   ├── build_fluid_check.py     # Hydraulic fluid film surface drainage runoff validator
 │   ├── build_hex_board.py       # IPC-2152 compliant trace temperature audit validator
+│   ├── build_stress_tester.py   # Lifecycle sortie surge simulation & stress loop engine
 │   └── main.py                  # Root virtual motherboard UEFI-HX secure boot firmware
 ```
 
