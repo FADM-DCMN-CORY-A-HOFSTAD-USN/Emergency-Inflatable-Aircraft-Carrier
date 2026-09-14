@@ -1,0 +1,50 @@
+(kicad_pcb (version 20240108) (generator pcbnew)
+
+  (general
+    (thickness 2.0) ; Standardized rugged 2.0mm internal substrate layer
+  )
+
+  (layers
+    (0 "F.Cu" signal)
+    (31 "B.Cu" signal)
+    (32 "F.Adhes" user "F.Adhesive")
+    (33 "B.Adhes" user "B.Adhesive")
+    (34 "F.Paste" user "F.Paste")
+    (35 "B.Paste" user "B.Paste")
+    (36 "F.SilkS" user "F.SilkScreen")
+    (37 "B.SilkS" user "B.SilkScreen")
+    (38 "F.Mask" user "F.Mask")
+    (39 "B.Mask" user "B.Mask")
+    (40 "Edge.Cuts" user)
+  )
+
+  (setup
+    (pad_to_pad_clearance 0.5)
+    (clearance_min 0.4)
+    (track_width 3.5) ; Enforced heavy width for high-current launch/arrest pulses
+    (via_size 1.2)
+    (via_drilling 0.6)
+  )
+
+  ;; Weatherproof Titanium Box Guard Ring Isolation Zone
+  (zone (net 0) (layer "F.Cu") (tstamp "zone-jbox-guard-01")
+    (hatch edge 0.5)
+    (connect_pads yes (clearance 0.8))
+    (min_thickness 0.5)
+    (filled_polygon
+      (pts
+        (xy -10000 -10000) (xy 10000 -10000) (xy 10000 10000) (xy -10000 10000)
+      )
+    )
+  )
+
+  ;; 45-Degree Internal Interconnect Routing to Primary Pin Array
+  (segment (start -5000 2000) (end -4500 2500) (width 3.5) (layer "F.Cu") (net 1) (tstamp "jbox-track-01"))
+  (segment (start -4500 2500) (end 4500 2500) (width 3.5) (layer "F.Cu") (net 1) (tstamp "jbox-track-02"))
+  (segment (start 4500 2500) (end 5000 2000) (width 3.5) (layer "F.Cu") (net 1) (tstamp "jbox-track-03"))
+
+  ;; 45-Degree Internal Telemetry Return Line Routing
+  (segment (start -5000 -2000) (end -4500 -2500) (width 2.0) (layer "F.Cu") (net 2) (tstamp "jbox-track-04"))
+  (segment (start -4500 -2500) (end 4500 -2500) (width 2.0) (layer "F.Cu") (net 2) (tstamp "jbox-track-05"))
+  (segment (start 4500 -2500) (end 5000 -2000) (width 2.0) (layer "F.Cu") (net 2) (tstamp "jbox-track-06"))
+)

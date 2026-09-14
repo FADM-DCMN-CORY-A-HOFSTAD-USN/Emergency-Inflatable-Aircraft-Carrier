@@ -1,0 +1,55 @@
+(kicad_pcb (version 20240108) (generator pcbnew)
+
+  (general
+    (thickness 3.0)
+  )
+
+  (layers
+    (0 "F.Cu" signal)
+    (31 "B.Cu" signal)
+    (32 "F.Adhes" user "F.Adhesive")
+    (33 "B.Adhes" user "B.Adhesive")
+    (34 "F.Paste" user "F.Paste")
+    (35 "B.Paste" user "B.Paste")
+    (36 "F.SilkS" user "F.SilkScreen")
+    (37 "B.SilkS" user "B.SilkScreen")
+    (38 "F.Mask" user "F.Mask")
+    (39 "B.Mask" user "B.Mask")
+    (40 "Edge.Cuts" user)
+  )
+
+  (setup
+    (pad_to_pad_clearance 0.6)
+    (clearance_min 0.5)
+    (track_width 3.5) ; Expanded to 3.5mm track width for 3oz copper at 45.0A continuous load
+    (via_size 1.5)
+    (via_drilling 0.8)
+  )
+
+  ;; High-Voltage Input Terminal Via Arrays (600A External Feed Entry)
+  (via (at -10000 0) (size 2.5) (drill 1.2) (layers "F.Cu" "B.Cu") (net 1))
+  (via (at -10000 500) (size 2.5) (drill 1.2) (layers "F.Cu" "B.Cu") (net 1))
+  (via (at -10000 -500) (size 2.5) (drill 1.2) (layers "F.Cu" "B.Cu") (net 1))
+
+  ;; Weatherproof Guard Ring Isolation Boundaries (Hermetic Ceramic Wall Offset)
+  (zone (net 0) (layer "F.Cu") (tstamp "zone-guard-ring-01")
+    (hatch edge 0.5)
+    (connect_pads yes (clearance 1.0))
+    (min_thickness 0.6)
+    (filled_polygon
+      (pts
+        (xy -15000 -1500) (xy 15000 -1500) (xy 15000 1500) (xy -15000 1500)
+      )
+    )
+  )
+
+  ;; Blower Motor Bus: 45-Degree Trace Routing from Main Conduit entry to Pin 1
+  (segment (start -5000 0) (end -4500 500) (width 3.5) (layer "F.Cu") (net 1) (tstamp "track-45-01"))
+  (segment (start -4500 500) (end 2500 500) (width 3.5) (layer "F.Cu") (net 1) (tstamp "track-45-02"))
+  (segment (start 2500 500) (end 3000 0) (width 3.5) (layer "F.Cu") (net 1) (tstamp "track-45-03"))
+
+  ;; Bilge Sump Relay Bus: 45-Degree Trace Routing to Submersible Pump Arrays
+  (segment (start -5000 0) (end -4500 -500) (width 3.5) (layer "F.Cu") (net 2) (tstamp "track-45-04"))
+  (segment (start -4500 -500) (end 2500 -500) (width 3.5) (layer "F.Cu") (net 2) (tstamp "track-45-05"))
+  (segment (start 2500 -500) (end 3000 0) (width 3.5) (layer "F.Cu") (net 2) (tstamp "track-45-06"))
+)

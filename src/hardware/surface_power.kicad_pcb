@@ -1,0 +1,50 @@
+(kicad_pcb (version 20240108) (generator pcbnew)
+
+  (general
+    (thickness 0.5) ; Ultra-thin 0.5mm profile optimized for flat-foil ribbon surfaces
+  )
+
+  (layers
+    (0 "F.Cu" signal)
+    (31 "B.Cu" signal)
+    (32 "F.Adhes" user "F.Adhesive")
+    (33 "B.Adhes" user "B.Adhesive")
+    (34 "F.Paste" user "F.Paste")
+    (35 "B.Paste" user "B.Paste")
+    (36 "F.SilkS" user "F.SilkScreen")
+    (37 "B.SilkS" user "B.SilkScreen")
+    (38 "F.Mask" user "F.Mask")
+    (39 "B.Mask" user "B.Mask")
+    (40 "Edge.Cuts" user)
+  )
+
+  (setup
+    (pad_to_pad_clearance 0.4)
+    (clearance_min 0.3)
+    (track_width 4.0) ; Broad 4.0mm track width to handle high-amperage induction pulses on thin foil
+    (via_size 1.0)
+    (via_drilling 0.5)
+  )
+
+  ;; Weatherproof Flat-Foil Guard Ring Isolation Boundary
+  (zone (net 0) (layer "F.Cu") (tstamp "zone-surface-guard-01")
+    (hatch edge 0.4)
+    (connect_pads yes (clearance 0.6))
+    (min_thickness 0.4)
+    (filled_polygon
+      (pts
+        (xy -20000 -2000) (xy 20000 -2000) (xy 20000 2000) (xy -20000 2000)
+      )
+    )
+  )
+
+  ;; 45-Degree Flat Foil Trace Layout to Launch/Catch Induction Segments
+  (segment (start -10000 1000) (end -9500 1500) (width 4.0) (layer "F.Cu") (net 1) (tstamp "foil-track-01"))
+  (segment (start -9500 1500) (end 10000 1500) (width 4.0) (layer "F.Cu") (net 1) (tstamp "foil-track-02"))
+  (segment (start 10000 1500) (end 10500 1000) (width 4.0) (layer "F.Cu") (net 1) (tstamp "foil-track-03"))
+
+  ;; 45-Degree Return Path for Surface-Mounted Telemetry Loop
+  (segment (start -10000 -1000) (end -9500 -1500) (width 2.0) (layer "F.Cu") (net 2) (tstamp "foil-track-04"))
+  (segment (start -9500 -1500) (end 10000 -1500) (width 2.0) (layer "F.Cu") (net 2) (tstamp "foil-track-05"))
+  (segment (start 10000 -1500) (end 10500 -1000) (width 2.0) (layer "F.Cu") (net 2) (tstamp "foil-track-06"))
+)
